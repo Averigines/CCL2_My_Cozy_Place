@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
+    <link href="https://fonts.googleapis.com/css?family=Mali" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
+    <link rel ="stylesheet" href="/styleAll.css">
+    <title>Index</title>
+</head>
+<body>
+<nav id = "topbar">
+    <ul id = "top_left">
+        <li><a onclick = "document.location.href = '/'">my cozy place</a></li>
+    </ul>
+    <ul id = "top_middle">
+        <li>
+            <input id = 'search_bar' type = 'text' name = 'search_bar' placeholder="Search for articles">
+            <i id = "searchIcon" class="material-symbols-outlined">search</i>
+        </li>
+    </ul>
+    <ul id = "top_right">
+    <% if(user) { %>
+            <% if(user.imageuuid != null) {%>
+            <li><img id = 'avatarNav' src = '/uploads/<%= user.imageuuid%>' onclick = "document.location.href = '/users/<%= user.UID%>'"></li>
+        <%}
+            else {%>
+                <li><img id = 'avatarNav' src = '/uploads/example-avatar.jpg' onclick = "document.location.href = '/users/<%= user.UID%>'"></li>
+            <%}}
+                else { %>
+        <li><a onclick = "document.location.href = '/login'">Login</a></li>
+            <%}%>
+    <% if(user) { %>
+        <li><a onclick = "document.location.href = '/logout'">Logout</a></li>
+    <%}
+    else {%>
+        <li><a onclick = "document.location.href = '/register'">Register</a></li>
+    <%}%>
+
+        <li><i id = "shopping_cart" class="material-symbols-outlined">shopping_cart</i></li>
+    </ul>
+</nav>
+<nav id = "navbar">
+    <ul>
+        <li><a>Knitting</a></li>
+        <li><a>Stitching</a></li>
+        <li><a>Woodwork</a></li>
+        <li><a>Pottery</a></li>
+        <li><a>More</a></li>
+    </ul>
+</nav>
+
+<div id = 'wrapper'>
+    <div class = 'section'>
+        <h1>Our selection for you!</h1>
+        <div class = 'items'>
+            <% if(items.length >= 5) {
+             //randomize items
+                for (let i = items.length - 1; i > 0; i--) {
+                    let j = Math.floor(Math.random() * (i + 1));
+                    let temp = items[i];
+                    items[i] = items[j];
+                    items[j] = temp;
+                }
+             for(let i = 0; i < 5; i++) { %>
+            <div class = 'item'>
+                <div class = "divImageSelection">
+                    <img class = 'imageSelection' src = '/uploads/<%= items[i].imageuuid1%>' onclick = "document.location.href = '/items/<%= items[i].IID%>'">
+                </div>
+                <p class = "titleMain" onclick = "document.location.href = '/items/<%= items[i].IID%>'"><%= items[i].title%></p>
+                <% for(let j = 0; j < users.length; j++) {
+                if (users[j].UID === items[i].userID) {
+                %>
+                    <p class = 'seller_greyed' onclick = "document.location.href = '/users/<%=users[j].UID%>'"><%= users[j].username %></p>
+                <%}}%>
+                <p class = 'price_big'><%= items[i].price%> €</p>
+            </div>
+            <%}}%>
+        </div>
+    </div>
+    <div class = "section">
+        <div class = "subsection">
+            <div class = "subsection_left">
+                <h1>Discover others</h1>
+                <div class = "users">
+                    <% //randomize items
+                    for (let i = users.length - 1; i > 0; i--) {
+                        let j = Math.floor(Math.random() * (i + 1));
+                        let temp = users[i];
+                        users[i] = users[j];
+                        users[j] = temp;
+                    }
+                    if (users.length < 4) {
+                    for(let i = 0; i < users.length; i++) { %>
+                        <div class = 'user'>
+                            <div class = "divImageSelectionUsers">
+                                <img class = 'imageSelectionUsers' onclick = "document.location.href = '/users/<%= users[i].UID%>'" src = '/uploads/<%= users[i].imageuuid%>'>
+                            </div>
+                            <p class = "titleMain" onclick = "document.location.href = '/users/<%= users[i].UID%>'"><%= users[i].username%></p>
+                        </div>
+                    <%}} else {
+                    for(let i = 0; i < 4; i++) { %>
+                        <div class = 'user'>
+                            <% if(users[i].imageuuid) {%>
+                                <div class = "divImageSelectionUsers">
+                                    <img class = 'imageSelectionUsers' onclick = "document.location.href = '/users/<%= users[i].UID%>'" src = '/uploads/<%= users[i].imageuuid%>'>
+                                </div>
+                            <%} else {%>
+                                <div class = "divImageSelectionUsers">
+                                    <img class = 'imageSelectionUsers' onclick = "document.location.href = '/users/<%= users[i].UID%>'" src = '/uploads/example-avatar_big'>
+                                </div>
+                            <%}%>
+                            <p class = "titleMain" onclick = "document.location.href = '/users/<%= users[i].UID%>'"><%= users[i].username%></p>
+                        </div>
+                    <%}}%>
+                </div>
+            </div>
+            <div class = "subsection_right">
+                <h1>More items</h1>
+                <div class = "itemSlider">
+                    <button class="buttonNav" onclick="plusDivs(-1)">&#10094;</button>
+                    <% for(i = 0; i < items.length; i++) {
+                    if(items[i].imageuuid1) {%>
+                        <div class ="mySlides">
+                            <div class = "imageSlides">
+                                <img class="imagesSlider" src="/uploads/<%= items[i].imageuuid1%>" onclick = "document.location.href = '/items/<%= items[i].IID%>'">
+                            </div>
+                            <p class = "titleMain" onclick = "document.location.href = '/items/<%= items[i].IID%>'"><%= items[i].title%></p>
+                            <% for(let j = 0; j < users.length; j++) {
+                            if (users[j].UID === items[i].userID) {
+                            %>
+                                <p class = 'seller_greyed' onclick = "document.location.href = '/users/<%=users[j].UID%>'"><%= users[j].username %></p>
+                            <%}}%>
+                            <p class = 'price_big'><%= items[i].price%> €</p>
+                        </div>
+                    <%}}%>
+                    <button class="buttonNav" onclick="plusDivs(+1)">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let slideIndex1 = 0;
+    let slideIndex2 = 1;
+
+    showDivs(slideIndex1);
+
+    function plusDivs(n) {
+        showDivs(slideIndex1 += n);
+    }
+
+    function showDivs(n) {
+        let i;
+        let x = document.getElementsByClassName("mySlides");
+        if (n > x.length-1) {slideIndex1 = 0}
+        if (n < 0) {slideIndex1 = x.length - 1}
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        if (slideIndex1 < x.length-1) {slideIndex2 = slideIndex1+1}
+        else {slideIndex2 = 0}
+        console.log(slideIndex1);
+        console.log(slideIndex2);
+        x[slideIndex1].style.display = "block";
+        x[slideIndex2].style.display = "block";
+    }
+</script>
+</body>
+</html>

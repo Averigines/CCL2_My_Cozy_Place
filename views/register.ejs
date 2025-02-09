@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
+    <link href="https://fonts.googleapis.com/css?family=Mali" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
+    <link rel ="stylesheet" href="/styleAll.css">
+    <link rel ="stylesheet" href="/styleRegister.css">
+</head>
+<body>
+<nav id = "topbar">
+    <ul id = "top_left">
+        <li><a onclick = "document.location.href = '/'">my cozy place</a></li>
+    </ul>
+    <ul id = "top_middle">
+        <li>
+            <input id = 'search_bar' type = 'text' name = 'search_bar' placeholder="Search for articles">
+            <i id = "searchIcon" class="material-symbols-outlined">search</i>
+        </li>
+    </ul>
+    <ul id = "top_right">
+        <% if(user) { %>
+            <% if(user.imageuuid != null) {%>
+                <li><img id = 'avatarNav' src = '/uploads/<%= user.imageuuid%>' onclick = "document.location.href = '/users/<%= user.UID%>'"></li>
+            <%}
+            else {%>
+                <li><img id = 'avatarNav' src = '/uploads/example-avatar.jpg' onclick = "document.location.href = '/users/<%= user.UID%>'"></li>
+        <%}}
+        else { %>
+            <li><a onclick = "document.location.href = '/login'">Login</a></li>
+        <%}%>
+        <% if(user) { %>
+            <li><a onclick = "document.location.href = '/logout'">Logout</a></li>
+        <%}
+        else {%>
+            <li><a onclick = "document.location.href = '/register'">Register</a></li>
+        <%}%>
+
+        <li><i id = "shopping_cart" class="material-symbols-outlined">shopping_cart</i></li>
+    </ul>
+</nav>
+<nav id = "navbar">
+    <ul>
+        <li><a>Knitting</a></li>
+        <li><a>Stitching</a></li>
+        <li><a>Woodwork</a></li>
+        <li><a>Pottery</a></li>
+        <li><a>More</a></li>
+    </ul>
+</nav>
+    <div id = "wrapper">
+        <div id = "formRegister">
+            <h1>Register now</h1>
+                <form action = '/register' method = 'post' enctype="multipart/form-data">
+                    <div class = 'form_part'>
+                        <div class = 'form_element'>
+                            <div class = 'form_element_upper'>
+                                <i class="material-symbols-outlined" style = 'color:#cbb397; min-width: 32px'>mail</i>
+                                <input type = 'email' name = 'email' placeholder = 'E-Mail address' required="required">
+                            </div>
+                            <hr>
+                        </div>
+                        <div class = 'form_element'>
+                            <div class = 'form_element_upper'>
+                                <i class="material-symbols-outlined" style = 'color:#cbb397; min-width: 32px'>person</i>
+                                <input type = 'text' name = 'username' placeholder = 'Username' required="required">
+                            </div>
+                            <hr>
+                        </div>
+                        <div class = 'form_element'>
+                            <div class = 'form_element_upper'>
+                                <i class="material-symbols-outlined" style = 'color:#cbb397; min-width: 32px'>lock</i>
+                                <input type = 'password' name = 'password' placeholder = 'Password' minlength="6" required="required">
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class = 'form_part'>
+                        <div class = 'form_element'>
+                            <div class = 'form_element_upper'>
+                                <i class="material-symbols-outlined" style = 'color:#cbb397; min-width: 32px'></i>
+                                <input type = 'text' name = 'firstname' placeholder = 'First Name' required="required">
+                            </div>
+                            <hr>
+                        </div>
+                        <div class = 'form_element'>
+                            <div class = 'form_element_upper'>
+                                <i class="material-symbols-outlined" style = 'color:#cbb397; min-width: 32px'></i>
+                                <input type = 'text' name = 'lastname' placeholder = 'Last Name' required="required">
+                            </div>
+                            <hr>
+                        </div>
+                        <div class = 'form_element'>
+                            <div class = 'form_element_upper'>
+                                <i class="material-symbols-outlined" style = 'color:#cbb397; min-width: 32px'></i>
+                                <input type = 'text' name = 'country' placeholder = 'Country' required="required">
+                            </div>
+                            <hr>
+                        </div>
+                        <div class = 'form_element'>
+                            <div class = 'form_element_upper'>
+                                <i class="material-symbols-outlined" style = 'color:#cbb397; min-width: 32px'></i>
+                                <input type = 'text' name = 'city' placeholder = 'City' required="required">
+                            </div>
+                            <hr>
+                        </div>
+                        <div class = 'form_element'>
+                            <div class = 'form_element_upper'>
+                                <i class="material-symbols-outlined" style = 'color:#cbb397; min-width: 32px'></i>
+                                <input type = 'text' name = 'streetaddress' placeholder = 'Street Address' required="required">
+                            </div>
+                            <hr>
+                        </div>
+                        <div class = 'form_element'>
+                            <div class = 'form_element_upper'>
+                                <i class="material-symbols-outlined" style = 'color:#cbb397; min-width: 32px'>smartphone</i>
+                                <input type = 'number' name = 'phonenumber' placeholder = 'Phone Number' required="required">
+                            </div>
+                            <hr>
+                        </div>
+                        <div class = 'form_element'>
+                            <div class = 'form_element_upper'>
+                                <i class="material-symbols-outlined" style = 'color:#cbb397; min-width: 32px'>photo</i>
+                                <label for = "avatar">
+                                    Select your profile picture <br/>
+                                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                                    <span id = "imageName"></span>
+                                </label>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <input id = "submit" type="submit" value="Sign Up">
+                </form>
+        </div>
+
+    </div>
+<script>
+    let input = document.getElementById("avatar");
+    let imageName = document.getElementById("imageName")
+
+    input.addEventListener("change", ()=>{
+        let inputImage = document.querySelector("input[type=file]").files[0];
+
+        imageName.innerText = inputImage.name;
+    })
+</script>
+</body>
+</html>

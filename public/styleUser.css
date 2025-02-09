@@ -1,0 +1,124 @@
+.profileName {
+    font-family: Mali;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 0;
+
+}
+
+.profileCity {
+    font-family: Mali;
+    font-weight: bold;
+    margin-bottom: 32px;
+}
+
+#changeUserButton {
+    font-size: 16px;
+    width: 160px;
+    height: 40px;
+}
+
+.profile_User {
+    max-width: 192px;
+}
+
+#profile_User_Picture {
+    cursor: default;
+    max-width: 192px;
+    border-radius: 5px;
+    border: 1px #4b4d26 solid;
+}
+
+#newItemButton {
+    font-size: 20px;
+    width: 160px;
+    height: 48px;
+}
+
+.itemImageSmall {
+    max-width: 96px;
+    max-height: 96px;
+    object-fit: cover;
+    cursor: default;
+}
+
+.subsection_right {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+
+}
+
+.subsection_left {
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+}
+
+.itemsHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.divItem {
+    display: flex;
+    margin-bottom: 32px;
+    justify-content: space-between;
+}
+
+.itemName {
+    font-size: 20px;
+    margin: 0;
+    font-weight: bold;
+    cursor: pointer;
+    color: #4b4d26;
+}
+
+.itemName:hover {
+    text-decoration: underline;
+}
+
+.itemPrice {
+    font-size: 20px;
+    margin: 0;
+}
+
+.divItemImageSmall {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 96px;
+    margin-right: 64px;
+
+}
+
+.itemText {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.divItems {
+    overflow-y: scroll;
+    height: 500px;
+}
+
+.divItemPart {
+    display: flex;
+}
+
+.buttonChangeItem, .buttonDeleteItem {
+    width: 96px;
+    height: 40px;
+    font-size: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.section {
+    border: none;
+    height: 100%;
+}

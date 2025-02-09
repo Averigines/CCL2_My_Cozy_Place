@@ -1,0 +1,51 @@
+h1 {
+    color: #4b4d26;
+}
+
+input:focus {
+    outline: none;
+}
+
+form {
+    text-align: center;
+}
+
+.form_element_upper {
+    display: flex;
+    padding-left: 16px;
+}
+
+.form_part {
+    margin-bottom: 64px;
+}
+
+hr {
+    width: 400px;
+    color: #613a2b;
+}
+
+input, label {
+    border: none;
+}
+
+label {
+    cursor: pointer;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 248px;
+    color: #818181;
+    font-size: 20px;
+}
+
+form input {
+    margin-top: 0;
+    padding: 0;
+    color: black;
+}
+
+input [type=number] {
+    background-color: #80916d;
+    color: white;
+}
